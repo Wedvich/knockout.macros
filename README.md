@@ -30,8 +30,15 @@ And here's a shorthand way with **knockout.macros**:
     
 Supported macros
 ----------------
-- `ko.computed.and( a, b )` -- logical **and** between `a` and `b`
-- `ko.computed.or( a, b )` -- logical **or** between `a` and `b`
+Both `a` and `b` can be either a Knockout observable or a value/function that returns a value.
+
+- `ko.computed.and( a, b )` -- returns the result of a logical **and** between `a` and `b`.
+- `ko.computed.equal( a, b )` -- returns whether `a` and `b` are equal (`===`).
+- `ko.computed.gt( a, b )` -- returns whether `a` is greater than `b`. Will return `false` if the types differ.
+- `ko.computed.gte( a, b )` -- returns whether `a` is greater than or equal to `b`. Will return `false` if the types differ.
+- `ko.computed.lt( a, b )` -- returns whether `a` is less than `b`. Will return `false` if the types differ.
+- `ko.computed.lte( a, b )` -- returns whether `a` is less than or equal to `b`. Will return `false` if the types differ.
+- `ko.computed.or( a, b )` -- returns the result of a logical **or** between `a` and `b`.
 
 Supported Knockout versions
 ---------------------------

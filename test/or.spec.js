@@ -1,4 +1,4 @@
-describe( 'Logical OR computed', function () {
+describe( 'Logical OR', function () {
     
     var booleanObservable1 = ko.observable();
     var booleanObservable2 = ko.observable();
@@ -11,7 +11,7 @@ describe( 'Logical OR computed', function () {
     } );
     
     it( 'Should return true unless both supplied observables are falsy', function () {
-        var computed = ko.computed.or( booleanObservable1, booleanObservable2 );
+        computed = ko.computed.or( booleanObservable1, booleanObservable2 );
         expect( computed() ).toEqual( false );
         booleanObservable1( true );
         expect( computed() ).toEqual( true );
@@ -24,7 +24,7 @@ describe( 'Logical OR computed', function () {
     } );
     
     it( 'Should return true unless both supplied arguments are falsy', function () {
-        var computed = ko.computed.or( booleanObservable1, false );
+        computed = ko.computed.or( booleanObservable1, false );
         expect( computed() ).toEqual( false );
         booleanObservable1( true );
         expect( computed() ).toEqual( true );

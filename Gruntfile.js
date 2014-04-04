@@ -8,6 +8,11 @@ module.exports = function ( grunt ) {
                     'src/_pre.js',
                     'src/helpers.js',
                     'src/and.js',
+                    'src/equal.js',
+                    'src/gt.js',
+                    'src/gte.js',
+                    'src/lt.js',
+                    'src/lte.js',
                     'src/or.js',
                     'src/_post.js'
                 ],
@@ -16,7 +21,7 @@ module.exports = function ( grunt ) {
         },
         
         jasmine: {
-            base: {
+            all: {
                 src: 'knockout.macros.min.js',
                 options: {
                     specs: 'test/*.spec.js',
@@ -48,5 +53,5 @@ module.exports = function ( grunt ) {
     grunt.loadNpmTasks( 'grunt-contrib-jasmine' );
     grunt.loadNpmTasks( 'grunt-contrib-uglify' );
     
-    grunt.registerTask( 'default', [ 'concat', 'uglify:beautify', 'uglify:minify', 'jasmine' ]  );
+    grunt.registerTask( 'default', [ 'concat', 'uglify:beautify', 'uglify:minify', 'jasmine:all' ]  );
 };

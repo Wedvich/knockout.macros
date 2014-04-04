@@ -1,4 +1,4 @@
-describe( 'Logical AND computed', function () {
+describe( 'Logical AND', function () {
     
     var booleanObservable1 = ko.observable();
     var booleanObservable2 = ko.observable();
@@ -11,7 +11,7 @@ describe( 'Logical AND computed', function () {
     } );
     
     it( 'Should return false unless both supplied observables are truthy', function () {
-        var computed = ko.computed.and( booleanObservable1, booleanObservable2 );
+        computed = ko.computed.and( booleanObservable1, booleanObservable2 );
         expect( computed() ).toEqual( false );
         booleanObservable1( true );
         expect( computed() ).toEqual( false );
@@ -22,7 +22,7 @@ describe( 'Logical AND computed', function () {
     } );
     
     it( 'Should return false unless both supplied arguments are truthy', function () {
-        var computed = ko.computed.and( booleanObservable1, true );
+        computed = ko.computed.and( booleanObservable1, true );
         expect( computed() ).toEqual( false );
         booleanObservable1( true );
         expect( computed() ).toEqual( true );
