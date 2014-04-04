@@ -1,6 +1,7 @@
 Macros for Knockout computed observables
 ========================================
 ***beta version***
+[![Build Status](https://travis-ci.org/Wedvich/knockout.macros.svg?branch=master)](https://travis-ci.org/Wedvich/knockout.macros)
 
 This plugin adds a bunch of macros for shorthand creation of common Knockout computed observables, inspired by the ones found in Ember.
 
