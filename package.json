@@ -1,0 +1,24 @@
+{
+  "name": "knockout.macros",
+  "description": "Plugin with macros for Knockout computed observables",
+  "version": "0.1.0",
+  "author": {
+    "name": "Martin Wedvich",
+    "url": "http://martin.wedvi.ch"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Wedvich/knockout.macros.git"
+  },
+  "bugs": "https://github.com/Wedvich/knockout.macros/issues",
+  "dependencies": {
+    "knockout": "~3.1"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.4",
+    "grunt-contrib-concat": "~0.4.0",
+    "grunt-contrib-jasmine": "~0.6.3",
+    "grunt-contrib-uglify": "~0.4.0"
+  }
+}
