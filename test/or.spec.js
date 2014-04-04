@@ -5,6 +5,8 @@ describe( 'Logical OR', function () {
     
     var computed;
     
+    ko.computedMacros.enable();
+    
     beforeEach( function () {
         booleanObservable1( false );
         booleanObservable2( false );

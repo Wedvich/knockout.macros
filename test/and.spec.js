@@ -10,6 +10,8 @@ describe( 'Logical AND', function () {
         booleanObservable2( false );
     } );
     
+    ko.computedMacros.enable();
+    
     it( 'Should return false unless both supplied observables are truthy', function () {
         computed = ko.computed.and( booleanObservable1, booleanObservable2 );
         expect( computed() ).toEqual( false );

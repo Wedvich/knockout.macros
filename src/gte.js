@@ -14,4 +14,4 @@ var gte = function ( a, b ) {
     } );
 };
 
-ko.computed.gte = gte;
+macros.push( { name: 'gte', func: gte } );

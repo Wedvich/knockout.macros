@@ -14,4 +14,4 @@ var lt = function ( a, b ) {
     } );
 };
 
-ko.computed.lt = lt;
+macros.push( { name: 'lt', func: lt } );

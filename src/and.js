@@ -8,4 +8,4 @@ var and = function ( a, b ) {
     } );
 };
 
-ko.computed.and = and;
+macros.push( { name: 'and', func: and } );

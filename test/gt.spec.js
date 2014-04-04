@@ -5,6 +5,8 @@ describe( 'Greater than', function () {
     
     var computed;
     
+    ko.computedMacros.enable();
+    
     it( 'Should return false if comparing different types', function () {
         computed = ko.computed.gt( observable1, observable2 );
         observable1( 25 );

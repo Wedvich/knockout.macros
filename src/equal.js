@@ -8,4 +8,4 @@ var equal = function ( a, b ) {
     } );
 };
 
-ko.computed.equal = equal;
+macros.push( { name: 'equal', func: equal } );

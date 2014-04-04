@@ -1,5 +1,6 @@
 Macros for Knockout computed observables
 ========================================
+***beta version***
 
 This plugin adds a bunch of macros for shorthand creation of common Knockout computed observables, inspired by the ones found in Ember.
 
@@ -8,7 +9,9 @@ This plugin adds a bunch of macros for shorthand creation of common Knockout com
 Example usage
 -------------
 
-Here's a plain way of creating a logical *and* computed, which is true when both of its inputs also evaluate to true:
+The macros can be enabled by calling `ko.computedMacros.enable()`, after which they can be accessed directly through the `ko.computed` object. To avoid conflicts you can also pass `true` as an argument to the `ko.computedMacros.enable()` function. The macros will then be accessible through the `ko.computedMacros` object instead, leaving `ko.computed` untouched.
+
+Here's a plain way of creating a logical **and** computed, which is true when both of its inputs evaluate to true:
 
     var Model = function () {
         this.boolA = ko.observable( false );

@@ -14,4 +14,4 @@ var gt = function ( a, b ) {
     } );
 };
 
-ko.computed.gt = gt;
+macros.push( { name: 'gt', func: gt } );

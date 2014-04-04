@@ -14,4 +14,4 @@ var lte = function ( a, b ) {
     } );
 };
 
-ko.computed.lte = lte;
+macros.push( { name: 'lte', func: lte } );

@@ -6,7 +6,7 @@ module.exports = function ( grunt ) {
             all: {
                 src: [
                     'src/_pre.js',
-                    'src/helpers.js',
+                    'src/_helpers.js',
                     'src/and.js',
                     'src/equal.js',
                     'src/gt.js',

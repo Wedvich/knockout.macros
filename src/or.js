@@ -8,4 +8,4 @@ var or = function ( a, b ) {
     } );
 };
 
-ko.computed.or = or;
+macros.push( { name: 'or', func: or } );

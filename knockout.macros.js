@@ -1,5 +1,6 @@
-!function() {
+!function(ko) {
     if (!ko) throw new Error("Knockout.macros requires Knockout");
+    var macros = [];
     var getAccessor = function(obj) {
         return ko.isObservable(obj) ? obj : function() {
             return obj;
@@ -12,7 +13,10 @@
             return aAccessor() && bAccessor();
         });
     };
-    ko.computed.and = and;
+    macros.push({
+        name: "and",
+        func: and
+    });
     var equal = function(a, b) {
         var aAccessor = getAccessor(a);
         var bAccessor = getAccessor(b);
@@ -20,7 +24,10 @@
             return aAccessor() === bAccessor();
         });
     };
-    ko.computed.equal = equal;
+    macros.push({
+        name: "equal",
+        func: equal
+    });
     var gt = function(a, b) {
         var aAccessor = getAccessor(a);
         var bAccessor = getAccessor(b);
@@ -31,7 +38,10 @@
             return a > b;
         });
     };
-    ko.computed.gt = gt;
+    macros.push({
+        name: "gt",
+        func: gt
+    });
     var gte = function(a, b) {
         var aAccessor = getAccessor(a);
         var bAccessor = getAccessor(b);
@@ -42,7 +52,10 @@
             return a >= b;
         });
     };
-    ko.computed.gte = gte;
+    macros.push({
+        name: "gte",
+        func: gte
+    });
     var lt = function(a, b) {
         var aAccessor = getAccessor(a);
         var bAccessor = getAccessor(b);
@@ -53,7 +66,10 @@
             return a < b;
         });
     };
-    ko.computed.lt = lt;
+    macros.push({
+        name: "lt",
+        func: lt
+    });
     var lte = function(a, b) {
         var aAccessor = getAccessor(a);
         var bAccessor = getAccessor(b);
@@ -64,7 +80,10 @@
             return a <= b;
         });
     };
-    ko.computed.lte = lte;
+    macros.push({
+        name: "lte",
+        func: lte
+    });
     var or = function(a, b) {
         var aAccessor = getAccessor(a);
         var bAccessor = getAccessor(b);
@@ -72,5 +91,18 @@
             return aAccessor() || bAccessor();
         });
     };
-    ko.computed.or = or;
-}();
+    macros.push({
+        name: "or",
+        func: or
+    });
+    ko.computedMacros = {
+        enable: function(noConflict) {
+            var target = noConflict !== true ? ko.computed : ko.computedMacros;
+            var macro;
+            for (var i = 0; i < macros.length; ++i) {
+                macro = macros[i];
+                target[macro.name] = macro.func;
+            }
+        }
+    };
+}(ko);

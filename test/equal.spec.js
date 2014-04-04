@@ -5,6 +5,8 @@ describe( 'Equality', function () {
     
     var computed;
     
+    ko.computedMacros.enable();
+    
     it( 'Should return false when comparing different values', function () {
         computed = ko.computed.equal( observable1, observable2 );
         observable1( 'fish' );
