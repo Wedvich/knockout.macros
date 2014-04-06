@@ -1,4 +1,5 @@
-var equal = function ( a, b ) {
+// Check if a and b are equal (===)
+macros.equal = function ( a, b ) {
     
     var aAccessor = getAccessor( a );
     var bAccessor = getAccessor( b );
@@ -7,5 +8,3 @@ var equal = function ( a, b ) {
         return aAccessor() === bAccessor();
     } );
 };
-
-macros.push( { name: 'equal', func: equal } );

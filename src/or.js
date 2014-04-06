@@ -1,4 +1,5 @@
-var or = function ( a, b ) {
+// Perform a logical OR between a and b
+macros.or = function ( a, b ) {
     
     var aAccessor = getAccessor( a );
     var bAccessor = getAccessor( b );
@@ -7,5 +8,3 @@ var or = function ( a, b ) {
         return aAccessor() || bAccessor();
     } );
 };
-
-macros.push( { name: 'or', func: or } );

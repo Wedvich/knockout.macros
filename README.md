@@ -1,11 +1,10 @@
 Macros for Knockout computed observables
 ========================================
 ***beta version***
-[![Build Status](https://travis-ci.org/Wedvich/knockout.macros.svg?branch=master)](https://travis-ci.org/Wedvich/knockout.macros)
 
 This plugin adds a bunch of macros for shorthand creation of common Knockout computed observables, inspired by the ones found in Ember.
 
-[Grunt](http://gruntjs.com) is being used as the build tool, and tests are done with [Jasmine](http://jasmine.github.io).
+[Grunt](http://gruntjs.com) is used as the build tool, and tests are done with [Jasmine](http://jasmine.github.io).
 
 Example usage
 -------------

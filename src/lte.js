@@ -1,4 +1,5 @@
-var lte = function ( a, b ) {
+// Check if a is less than or equal to b
+macros.lte = function ( a, b ) {
     
     var aAccessor = getAccessor( a );
     var bAccessor = getAccessor( b );
@@ -13,5 +14,3 @@ var lte = function ( a, b ) {
         return a <= b;
     } );
 };
-
-macros.push( { name: 'lte', func: lte } );

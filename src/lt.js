@@ -1,4 +1,5 @@
-var lt = function ( a, b ) {
+// Check if a is less than b
+macros.lt = function ( a, b ) {
     
     var aAccessor = getAccessor( a );
     var bAccessor = getAccessor( b );
@@ -13,5 +14,3 @@ var lt = function ( a, b ) {
         return a < b;
     } );
 };
-
-macros.push( { name: 'lt', func: lt } );

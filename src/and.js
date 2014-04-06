@@ -1,4 +1,5 @@
-var and = function ( a, b ) {
+// Perform a logical AND between a and b
+macros.and = function ( a, b ) {
     
     var aAccessor = getAccessor( a );
     var bAccessor = getAccessor( b );
@@ -7,5 +8,3 @@ var and = function ( a, b ) {
         return aAccessor() && bAccessor();
     } );
 };
-
-macros.push( { name: 'and', func: and } );

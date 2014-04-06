@@ -1,4 +1,5 @@
-var gte = function ( a, b ) {
+// Check if a is greater than or equal to b
+macros.gte = function ( a, b ) {
     
     var aAccessor = getAccessor( a );
     var bAccessor = getAccessor( b );
@@ -13,5 +14,3 @@ var gte = function ( a, b ) {
         return a >= b;
     } );
 };
-
-macros.push( { name: 'gte', func: gte } );
