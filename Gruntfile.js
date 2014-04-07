@@ -14,6 +14,24 @@ module.exports = function ( grunt ) {
             }
         },
         
+        jshint: {
+            all: [ 'knockout.macros.js' ],
+            options: {
+                es3: true,
+                forin: true,
+                freeze: true,
+                immed: true,
+                latedef: true,
+                newcap: true,
+                strict: true,
+                undef: true,
+                
+                globals: {
+                    ko: true
+                }
+            }
+        },
+        
         jasmine: {
             all: {
                 src: 'knockout.macros.js',
@@ -25,16 +43,6 @@ module.exports = function ( grunt ) {
         },
         
         uglify: {
-            beautify: {
-                options: {
-                    beautify: true,
-                    mangle: false,
-                    compress: false
-                },
-                files: {
-                    'knockout.macros.js': 'knockout.macros.js'
-                }
-            },
             minify: {
                 files: {
                     'knockout.macros.min.js': 'knockout.macros.js'
@@ -44,8 +52,9 @@ module.exports = function ( grunt ) {
     } );
     
     grunt.loadNpmTasks( 'grunt-contrib-concat' );
+    grunt.loadNpmTasks( 'grunt-contrib-jshint' );
     grunt.loadNpmTasks( 'grunt-contrib-jasmine' );
     grunt.loadNpmTasks( 'grunt-contrib-uglify' );
     
-    grunt.registerTask( 'default', [ 'concat', 'uglify:beautify', 'uglify:minify', 'jasmine:all' ]  );
+    grunt.registerTask( 'default', [ 'concat', 'jshint', 'uglify:minify'/*, 'jasmine:all'*/ ]  );
 };
