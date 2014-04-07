@@ -1,9 +1,6 @@
 knockout.macros
 ===
-Plugin with macros for shorthand creation of Knockout computed observables
----
-
-This plugin adds a bunch of macros for shorthand creation of common Knockout computed observables.
+This plugin adds a bunch of macros for shorthand creation of Knockout computed observables.
 
 Usage
 ---
