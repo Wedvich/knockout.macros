@@ -1,5 +1,5 @@
 // Check if a is greater than b
-macros.gt = function ( a, b ) {
+ko.computedMacros.gt = function ( a, b ) {
     
     var aAccessor = getAccessor( a );
     var bAccessor = getAccessor( b );

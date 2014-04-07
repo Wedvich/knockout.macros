@@ -1,5 +1,5 @@
 // Check if a is less than or equal to b
-macros.lte = function ( a, b ) {
+ko.computedMacros.lte = function ( a, b ) {
     
     var aAccessor = getAccessor( a );
     var bAccessor = getAccessor( b );

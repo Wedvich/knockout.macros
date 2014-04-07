@@ -1,11 +1,7 @@
-ko.computedMacros = {
-    enable: function ( noConflict ) {
-        var target = noConflict !== true ? ko.computed : ko.computedMacros;
-        var macro;
-        for ( var m in macros ) {
-            if ( macros.hasOwnProperty( m ) )
-                target[ m ] = macros[ m ];
-        }
+ko.computedMacros.inject = function () {
+    for ( var m in ko.computedMacros ) {
+        if ( ko.computedMacros.hasOwnProperty( m ) && m !== this )
+            ko.computed[ m ] = ko.computedMacros[ m ];
     }
 };
 

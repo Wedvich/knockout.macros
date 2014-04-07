@@ -5,7 +5,7 @@ describe( 'Greater than or equal', function () {
     
     var computed;
     
-    ko.computedMacros.enable();
+    ko.computedMacros.inject();
     
     it( 'Should return false if comparing different types', function () {
         computed = ko.computed.gte( observable1, observable2 );

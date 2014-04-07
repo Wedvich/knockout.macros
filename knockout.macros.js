@@ -1,26 +1,26 @@
 !function(ko) {
     if (!ko) throw new Error("Knockout.macros requires Knockout");
-    var macros = {};
+    ko.computedMacros = {};
     var getAccessor = function(obj) {
         return ko.isObservable(obj) ? obj : function() {
             return obj;
         };
     };
-    macros.and = function(a, b) {
+    ko.computedMacros.and = function(a, b) {
         var aAccessor = getAccessor(a);
         var bAccessor = getAccessor(b);
         return new ko.computed(function() {
             return aAccessor() && bAccessor();
         });
     };
-    macros.equal = function(a, b) {
+    ko.computedMacros.equal = function(a, b) {
         var aAccessor = getAccessor(a);
         var bAccessor = getAccessor(b);
         return new ko.computed(function() {
             return aAccessor() === bAccessor();
         });
     };
-    macros.gt = function(a, b) {
+    ko.computedMacros.gt = function(a, b) {
         var aAccessor = getAccessor(a);
         var bAccessor = getAccessor(b);
         return new ko.computed(function() {
@@ -30,7 +30,7 @@
             return a > b;
         });
     };
-    macros.gte = function(a, b) {
+    ko.computedMacros.gte = function(a, b) {
         var aAccessor = getAccessor(a);
         var bAccessor = getAccessor(b);
         return new ko.computed(function() {
@@ -40,7 +40,7 @@
             return a >= b;
         });
     };
-    macros.lt = function(a, b) {
+    ko.computedMacros.lt = function(a, b) {
         var aAccessor = getAccessor(a);
         var bAccessor = getAccessor(b);
         return new ko.computed(function() {
@@ -50,7 +50,7 @@
             return a < b;
         });
     };
-    macros.lte = function(a, b) {
+    ko.computedMacros.lte = function(a, b) {
         var aAccessor = getAccessor(a);
         var bAccessor = getAccessor(b);
         return new ko.computed(function() {
@@ -60,20 +60,22 @@
             return a <= b;
         });
     };
-    macros.or = function(a, b) {
+    ko.computedMacros.not = function(value) {
+        var valueAccessor = getAccessor(value);
+        return new ko.computed(function() {
+            return !valueAccessor();
+        });
+    };
+    ko.computedMacros.or = function(a, b) {
         var aAccessor = getAccessor(a);
         var bAccessor = getAccessor(b);
         return new ko.computed(function() {
             return aAccessor() || bAccessor();
         });
     };
-    ko.computedMacros = {
-        enable: function(noConflict) {
-            var target = noConflict !== true ? ko.computed : ko.computedMacros;
-            var macro;
-            for (var m in macros) {
-                if (macros.hasOwnProperty(m)) target[m] = macros[m];
-            }
+    ko.computedMacros.inject = function() {
+        for (var m in ko.computedMacros) {
+            if (ko.computedMacros.hasOwnProperty(m) && m !== this) ko.computed[m] = ko.computedMacros[m];
         }
     };
 }(ko);

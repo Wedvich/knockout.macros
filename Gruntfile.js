@@ -13,6 +13,7 @@ module.exports = function ( grunt ) {
                     'src/gte.js',
                     'src/lt.js',
                     'src/lte.js',
+                    'src/not.js',
                     'src/or.js',
                     'src/_post.js'
                 ],

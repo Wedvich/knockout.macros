@@ -1,5 +1,5 @@
 // Perform a logical AND between a and b
-macros.and = function ( a, b ) {
+ko.computedMacros.and = function ( a, b ) {
     
     var aAccessor = getAccessor( a );
     var bAccessor = getAccessor( b );
