@@ -1,7 +1,7 @@
 !function(ko) {
     if (!ko) throw new Error("Knockout.macros requires Knockout");
     var getAccessor = function(obj) {
-        return ko.isObservable(obj) || typeof obj === typeof Function ? obj : function() {
+        return typeof obj === typeof Function ? obj : function() {
             return obj;
         };
     };

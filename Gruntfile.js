@@ -5,10 +5,10 @@ module.exports = function ( grunt ) {
         concat: {
             all: {
                 src: [
-                    'src/_pre.js',
+                    'src/_head.js',
                     'src/logical.js',
                     'src/relative.js',
-                    'src/_post.js'
+                    'src/_tail.js'
                 ],
                 dest: 'knockout.macros.js'
             }
