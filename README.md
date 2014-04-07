@@ -1,11 +1,12 @@
-Macros for Knockout computed observables
-========================================
-***beta version***
+knockout.macros
+===
+Plugin with macros for shorthand creation of Knockout computed observables
+---
 
 This plugin adds a bunch of macros for shorthand creation of common Knockout computed observables.
 
 Usage
--------------
+---
 
 The macros can be injected directly into the `ko.computed` object by calling `ko.computedMacros.inject()`. Otherwise, they'll be accessible through the `ko.computedMacros` object.
 
@@ -32,7 +33,7 @@ And here's a shorthand way with **knockout.macros**:
     };
     
 Macro reference
----------------
+---
 All values passed as parameters can be either Knockout observables or plain functions/values.
 
 Evaluates in pairs from left to right for variadic comparators.
@@ -104,9 +105,9 @@ Tests two or more values for strict equality using `===`.
 Tests two or more values for strict inequality using `!==`.
 
 Supported Knockout versions
----------------------------
-It's still in development, and has only been tested with Knockout 3.1 so far.
+---
+It's still in early development, and has only been tested with Knockout 3.1 so far.
 
 License
--------
+---
 MIT ([http://opensource.org/licenses/MIT](http://opensource.org/licenses/MIT))
