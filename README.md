@@ -45,9 +45,9 @@ Performs a logical *and* between two or more values, using the truthiness of eac
 
 ---
 
-**eq** `ko.computed.or( value1, value2[, valueN...] )` 
+**eq** `ko.computed.eq( value1, value2[, valueN...] )` 
 
-Tests two or more values for loose equality (`==`).
+Tests two or more values for loose equality using `==`.
 
 ---
 
@@ -75,9 +75,9 @@ Checks if the left value is less than or equal the right value for two or more v
 
 ---
 
-**neq** `ko.computed.or( value1, value2[, valueN...] )` 
+**neq** `ko.computed.neq( value1, value2[, valueN...] )` 
 
-Tests two or more values for loose inequality (`!=`).
+Tests two or more values for loose inequality using `!=`.
 
 ---
 
@@ -95,13 +95,13 @@ Performs a logical *or* between two or more values, using the truthiness of each
 
 **seq** `ko.computed.seq( value1, value2[, valueN...] )` 
 
-Tests two or more values for strict equality (`===`).
+Tests two or more values for strict equality using `===`.
 
 ---
 
 **sneq** `ko.computed.sneq( value1, value2[, valueN...] )` 
 
-Tests two or more values for strict inequality (`!==`).
+Tests two or more values for strict inequality using `!==`.
 
 Supported Knockout versions
 ---------------------------
