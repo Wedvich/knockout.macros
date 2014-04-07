@@ -20,5 +20,3 @@
                     ko.computed[ m ] = ko.computedMacros[ m ];
         }
     };
-
-} )( ko );

@@ -6,8 +6,10 @@ module.exports = function ( grunt ) {
             all: {
                 src: [
                     'src/_head.js',
+                    'src/functions.js',
                     'src/logical.js',
                     'src/relative.js',
+                    'src/exports.js',
                     'src/_tail.js'
                 ],
                 dest: 'knockout.macros.js'
@@ -27,6 +29,7 @@ module.exports = function ( grunt ) {
                 undef: true,
                 
                 globals: {
+                    define: true,
                     ko: true
                 }
             }

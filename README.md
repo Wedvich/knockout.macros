@@ -41,31 +41,43 @@ Evaluates in pairs from left to right for variadic comparators.
 
 **and** `ko.computed.and( value1, value2[, valueN...] )`
 
-Performs a logical *and* between 2 or more values, using the truthiness of each value.
+Performs a logical *and* between two or more values, using the truthiness of each value.
+
+---
+
+**eq** `ko.computed.or( value1, value2[, valueN...] )` 
+
+Tests two or more values for loose equality (`==`).
 
 ---
 
 **gt** `ko.computed.gt( value1, value2[, valueN...] )`
 
-Checks if the left value is greater than the right value for 2 or more values.
+Checks if the left value is greater than the right value for two or more values.
 
 ---
 
 **gte** `ko.computed.gte( value1, value2[, valueN...] )`
 
-Checks if the left value is greater than or equal the right value for 2 or more values.
+Checks if the left value is greater than or equal the right value for two or more values.
 
 ---
 
 **lt** `ko.computed.lt( value1, value2[, valueN...] )`
 
-Checks if the left value is less than the right value for 2 or more values.
+Checks if the left value is less than the right value for two or more values.
 
 ---
 
 **lte** `ko.computed.lte( value1, value2[, valueN...] )`
 
-Checks if the left value is less than or equal the right value for 2 or more values.
+Checks if the left value is less than or equal the right value for two or more values.
+
+---
+
+**neq** `ko.computed.or( value1, value2[, valueN...] )` 
+
+Tests two or more values for loose inequality (`!=`).
 
 ---
 
@@ -77,7 +89,19 @@ Returns the inverse boolean value of the truthiness of the passed value.
 
 **or** `ko.computed.or( value1, value2[, valueN...] )` 
 
-Performs a logical *or* between 2 or more values, using the truthiness of each value.
+Performs a logical *or* between two or more values, using the truthiness of each value.
+
+---
+
+**seq** `ko.computed.seq( value1, value2[, valueN...] )` 
+
+Tests two or more values for strict equality (`===`).
+
+---
+
+**sneq** `ko.computed.sneq( value1, value2[, valueN...] )` 
+
+Tests two or more values for strict inequality (`!==`).
 
 Supported Knockout versions
 ---------------------------

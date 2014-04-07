@@ -1,19 +1,11 @@
-( function ( ko ) {
-    
-    'use strict';
-    
-    if ( !ko )
-        throw new Error( 'Knockout.macros requires Knockout' );
-    
     // Helper function that wraps a plain value in a function to create a uniform accessor
     var getAccessor = function ( obj ) {
-        return typeof obj === typeof Function ? obj : function () { return obj; };
+        return typeof obj === 'function' ? obj : function () { return obj; };
     };
     
     // Helper function that returns a computed observable comparator with variadic parameters
     var getVariadicComparator = function ( comparator, deferred ) {
         return function () {
-            
             // Get accessors for the passed arguments
             var i = 0,
                 accessors = [];
