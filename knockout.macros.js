@@ -1,81 +1,63 @@
 !function(ko) {
     if (!ko) throw new Error("Knockout.macros requires Knockout");
-    ko.computedMacros = {};
     var getAccessor = function(obj) {
-        return ko.isObservable(obj) ? obj : function() {
+        return ko.isObservable(obj) || typeof obj === typeof Function ? obj : function() {
             return obj;
         };
     };
-    ko.computedMacros.and = function(a, b) {
-        var aAccessor = getAccessor(a);
-        var bAccessor = getAccessor(b);
-        return new ko.computed(function() {
-            return aAccessor() && bAccessor();
-        });
+    var getVariadicComparator = function(comparator, deferred) {
+        return function() {
+            var i = 0, accessors = [];
+            for (;i < arguments.length; ++i) accessors.push(getAccessor(arguments[i]));
+            return !deferred ? ko.computed(function() {
+                for (var j = 0; j < accessors.length - 1; ++j) if (!comparator(accessors[j](), accessors[j + 1]())) return false;
+                return true;
+            }) : ko.computed(function() {
+                var result;
+                for (var j = 0; j < accessors.length - 1; ++j) result = result || comparator(accessors[j](), accessors[j + 1]());
+                return result;
+            });
+        };
     };
-    ko.computedMacros.equal = function(a, b) {
-        var aAccessor = getAccessor(a);
-        var bAccessor = getAccessor(b);
-        return new ko.computed(function() {
-            return aAccessor() === bAccessor();
-        });
+    var getUnaryEvaluator = function(evaluator) {
+        return function() {
+            var accessor = getAccessor(arguments[0]);
+            return ko.computed(function() {
+                return evaluator(accessor());
+            });
+        };
     };
-    ko.computedMacros.gt = function(a, b) {
-        var aAccessor = getAccessor(a);
-        var bAccessor = getAccessor(b);
-        return new ko.computed(function() {
-            var a = aAccessor();
-            var b = bAccessor();
-            if (typeof a !== typeof b) return false;
-            return a > b;
-        });
+    var and = function(a, b) {
+        return a == true && b == true;
     };
-    ko.computedMacros.gte = function(a, b) {
-        var aAccessor = getAccessor(a);
-        var bAccessor = getAccessor(b);
-        return new ko.computed(function() {
-            var a = aAccessor();
-            var b = bAccessor();
-            if (typeof a !== typeof b) return false;
-            return a >= b;
-        });
+    var not = function(a) {
+        return !a;
     };
-    ko.computedMacros.lt = function(a, b) {
-        var aAccessor = getAccessor(a);
-        var bAccessor = getAccessor(b);
-        return new ko.computed(function() {
-            var a = aAccessor();
-            var b = bAccessor();
-            if (typeof a !== typeof b) return false;
-            return a < b;
-        });
+    var or = function(a, b) {
+        return a == true || b == true;
     };
-    ko.computedMacros.lte = function(a, b) {
-        var aAccessor = getAccessor(a);
-        var bAccessor = getAccessor(b);
-        return new ko.computed(function() {
-            var a = aAccessor();
-            var b = bAccessor();
-            if (typeof a !== typeof b) return false;
-            return a <= b;
-        });
+    var gt = function(a, b) {
+        return a > b;
     };
-    ko.computedMacros.not = function(value) {
-        var valueAccessor = getAccessor(value);
-        return new ko.computed(function() {
-            return !valueAccessor();
-        });
+    var gte = function(a, b) {
+        return a >= b;
     };
-    ko.computedMacros.or = function(a, b) {
-        var aAccessor = getAccessor(a);
-        var bAccessor = getAccessor(b);
-        return new ko.computed(function() {
-            return aAccessor() || bAccessor();
-        });
+    var lt = function(a, b) {
+        return a < b;
     };
-    ko.computedMacros.inject = function() {
-        for (var m in ko.computedMacros) {
-            if (ko.computedMacros.hasOwnProperty(m) && m !== this) ko.computed[m] = ko.computedMacros[m];
+    var lte = function(a, b) {
+        return a <= b;
+    };
+    ko.computedMacros = {
+        and: getVariadicComparator(and),
+        gt: getVariadicComparator(gt),
+        gte: getVariadicComparator(gte),
+        lt: getVariadicComparator(lt),
+        lte: getVariadicComparator(lte),
+        not: getUnaryEvaluator(not),
+        or: getVariadicComparator(or, true),
+        inject: function() {
+            for (var m in ko.computedMacros) if (ko.computedMacros.hasOwnProperty(m) && m !== this) ko.computed[m] = ko.computedMacros[m];
         }
     };
 }(ko);

@@ -6,15 +6,8 @@ module.exports = function ( grunt ) {
             all: {
                 src: [
                     'src/_pre.js',
-                    'src/_helpers.js',
-                    'src/and.js',
-                    'src/equal.js',
-                    'src/gt.js',
-                    'src/gte.js',
-                    'src/lt.js',
-                    'src/lte.js',
-                    'src/not.js',
-                    'src/or.js',
+                    'src/logical.js',
+                    'src/relative.js',
                     'src/_post.js'
                 ],
                 dest: 'knockout.macros.js'
@@ -23,7 +16,7 @@ module.exports = function ( grunt ) {
         
         jasmine: {
             all: {
-                src: 'knockout.macros.min.js',
+                src: 'knockout.macros.js',
                 options: {
                     specs: 'test/*.spec.js',
                     vendor: 'test/lib/*.js'

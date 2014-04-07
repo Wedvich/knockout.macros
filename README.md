@@ -2,21 +2,22 @@ Macros for Knockout computed observables
 ========================================
 ***beta version***
 
-This plugin adds a bunch of macros for shorthand creation of common Knockout computed observables, inspired by the ones found in Ember.
+This plugin adds a bunch of macros for shorthand creation of common Knockout computed observables.
 
 Usage
 -------------
 
 The macros can be injected directly into the `ko.computed` object by calling `ko.computedMacros.inject()`. Otherwise, they'll be accessible through the `ko.computedMacros` object.
 
-Here's an example of creating a logical **and** computed, which is true when both of its inputs evaluate to true:
+Here's an example of creating a logical **and** computed, which is true when all of its inputs evaluate to true:
 
     var Model = function () {
         this.a = ko.observable( false );
         this.b = ko.observable( true );
+        this.c = ko.observable( false );
         
-        this.bothAreTrue = ko.computed( function () {
-            return this.a() && this.b();
+        this.everythingIsTrue = ko.computed( function () {
+            return this.a() && this.b() && this.c();
         }.bind( this ) );
     };
   
@@ -25,57 +26,54 @@ And here's a shorthand way with **knockout.macros**:
     var Model = function () {
         this.a = ko.observable( false );
         this.b = ko.observable( true );
+        this.c = ko.observable( false );
         
-        this.bothAreTrue = ko.computed.and( this.a, this.b );
+        this.everythingIsTrue = ko.computed.and( this.a, this.b, this.c );
     };
     
 Macro reference
 ---------------
-**and** `ko.computed.and( a, b )`
+All values passed as parameters can be either Knockout observables or plain functions/values.
 
-Returns the result of a logical **and** between `a` and `b`. Both arguments can be either observables, functions or plain values, and can be of different types. Checks if the values are truthy/falsy, not strict boolean true/false.
+**and** `ko.computed.and( value1[, valueN...] )`
 
----
-
-**equal** `ko.computed.equal( a, b )`
-
-Returns whether `a` and `b` are equal. Both arguments can be either observables, functions or plain values. Checks for strict equality (`===`).
+Performs a logical *and* between 1 or more values, checking for loose equality to `true` internally to determine truthiness.
 
 ---
 
-**gt** `ko.computed.gt( a, b )`
+**gt** `ko.computed.gt( value1, value2[, valueN...] )`
 
-Returns whether `a` is greater than `b`. Both arguments can be either observables, functions or plain values. Always returns `false` if the value types differ.
-
----
-
-**gte** `ko.computed.gte( a, b )`
-
-Returns whether `a` is greater than or equal to `b`. Both arguments can be either observables, functions or plain values. Always returns `false` if the value types differ.
+Checks if the left value is greater than the right value for 2 or more values, evaulating in pairs from left to right.
 
 ---
 
-**lt** `ko.computed.lt( a, b )`
+**gte** `ko.computed.gte( value1, value2[, valueN...] )`
 
-Returns whether `a` is less than `b`. Both arguments can be either observables, functions or plain values. Always returns `false` if the value types differ.
-
----
-
-**lte** `ko.computed.lte( a, b )`
-
-Returns whether `a` is less than or equal to `b`. Both arguments can be either observables, functions or plain values. Always returns `false` if the value types differ.
+Checks if the left value is greater than or equal the right value for 2 or more values, evaulating in pairs from left to right.
 
 ---
 
-**not** `ko.computed.not( a )`
+**lt** `ko.computed.lt( value1, value2[, valueN...] )`
 
-Returns the result of a logical **not** on `a`. The argument can be either an observable, a function or a plain value. Checks if the value is truthy/falsy, not strict boolean true/false.
+Checks if the left value is less than the right value for 2 or more values, evaulating in pairs from left to right.
 
 ---
 
-**or** `ko.computed.or( a, b )`
+**lte** `ko.computed.lte( value1, value2[, valueN...] )`
 
-Returns the result of a logical **or** between `a` and `b`. Both arguments can be either observables, functions or plain values, and can be of different types. Checks if the values are truthy/falsy, not strict boolean true/false.
+Checks if the left value is less than or equal the right value for 2 or more values, evaulating in pairs from left to right.
+
+---
+
+**not** `ko.computed.not( value )` 
+
+Returns the inverse boolean value of the truthiness of the passed value.
+
+---
+
+**or** `ko.computed.or( value1[, valueN...] )` 
+
+Performs a logical *or* between 1 or more values, checking for loose equality to `true` internally to determine truthiness.
 
 Supported Knockout versions
 ---------------------------
