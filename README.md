@@ -101,9 +101,9 @@ Tests two or more values for strict equality using `===`.
 
 Tests two or more values for strict inequality using `!==`.
 
-Supported Knockout versions
+Support
 ---
-It's still in early development, and has only been tested with Knockout 3.1 so far.
+Tested with Knockout 3.1, 3.0 and 2.3.
 
 License
 ---

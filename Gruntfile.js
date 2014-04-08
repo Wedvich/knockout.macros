@@ -36,11 +36,40 @@ module.exports = function ( grunt ) {
         },
         
         jasmine: {
-            all: {
+            knockout23: {
                 src: 'knockout.macros.js',
                 options: {
-                    specs: 'test/*.spec.js',
-                    vendor: 'test/lib/*.js'
+                    specs: 'spec/*.spec.js',
+                    vendor: 'spec/lib/knockout-2.3.0.debug.js',
+                    template: require( 'grunt-template-jasmine-istanbul' ),
+                    templateOptions: {
+                        coverage: 'coverage/coverage.json',
+                        report: 'coverage'
+                    }
+                }
+            },
+            knockout30: {
+                src: 'knockout.macros.js',
+                options: {
+                    specs: 'spec/*.spec.js',
+                    vendor: 'spec/lib/knockout-3.0.0.debug.js',
+                    template: require( 'grunt-template-jasmine-istanbul' ),
+                    templateOptions: {
+                        coverage: 'coverage/coverage.json',
+                        report: 'coverage'
+                    }
+                }
+            },
+            knockout31: {
+                src: 'knockout.macros.js',
+                options: {
+                    specs: 'spec/*.spec.js',
+                    vendor: 'spec/lib/knockout-3.1.0.debug.js',
+                    template: require( 'grunt-template-jasmine-istanbul' ),
+                    templateOptions: {
+                        coverage: 'coverage/coverage.json',
+                        report: 'coverage'
+                    }
                 }
             }
         },
@@ -59,5 +88,5 @@ module.exports = function ( grunt ) {
     grunt.loadNpmTasks( 'grunt-contrib-jasmine' );
     grunt.loadNpmTasks( 'grunt-contrib-uglify' );
     
-    grunt.registerTask( 'default', [ 'concat', 'jshint', 'uglify:minify'/*, 'jasmine:all'*/ ]  );
+    grunt.registerTask( 'default', [ 'concat', 'jshint', 'jasmine:knockout23', 'jasmine:knockout30', 'jasmine:knockout31', 'uglify:minify' ]  );
 };
