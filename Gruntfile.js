@@ -6,6 +6,7 @@ module.exports = function ( grunt ) {
             all: {
                 src: [
                     'src/_head.js',
+                    'src/arrays.js',
                     'src/functions.js',
                     'src/logical.js',
                     'src/relative.js',

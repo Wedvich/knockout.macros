@@ -9,6 +9,47 @@
 } ( function ( ko ) {   
     'use strict';
 
+    // Returns whether the array contains any value strictly matching the value argument
+    var any = function ( arrayValue, argument ) {
+        var i = 0,
+            value;
+        for ( ; i < arrayValue.length; ++i ) {
+            value = arrayValue[ i ];
+            if ( value === argument )
+                return true;
+        }
+        return false;
+    }; 
+
+    // Returns the sum of numeric elements in the array
+    var mean = function ( arrayValue ) {
+        var i = 0,
+            sum = 0,
+            elements = 0,
+            value;
+        for ( ; i < arrayValue.length; ++i ) {
+            value = arrayValue[ i ];
+            if ( !isNaN( value ) ) {
+                sum += value;
+                ++elements;
+            }
+        }
+        return sum / elements;
+    };
+
+    // Returns the sum of numeric elements in the array
+    var sum = function ( arrayValue ) {
+        var i = 0,
+            sum = 0,
+            value;
+        for ( ; i < arrayValue.length; ++i ) {
+            value = arrayValue[ i ];
+            if ( !isNaN( value ) )
+                sum += value;
+        }
+        return sum;
+    };
+    
     // Helper function that wraps a plain value in a function to create a uniform accessor
     var getAccessor = function ( obj ) {
         return typeof obj === 'function' ? obj : function () { return obj; };
@@ -38,12 +79,23 @@
         };
     };
     
-    // Helper function that returns a computed observable evaluator for a single parameter
-    var getUnaryEvaluator = function ( evaluator ) {
+    // Helper function that returns a computed observable filter for a single parameter
+    var getUnaryFilter = function ( filter ) {
         return function () {
             var accessor = getAccessor( arguments[ 0 ] );
             return ko.computed( function () {
-                return evaluator( accessor() );
+                return filter( accessor() );
+            } );
+        };
+    };
+
+    // Helper function that returns a computed observable filter for two parameters
+    var getBinaryFilter = function ( filter ) {
+        return function () {
+            var accessor1 = getAccessor( arguments[ 0 ] );
+            var accessor2 = getAccessor( arguments[ 1 ] );
+            return ko.computed( function () {
+                return filter( accessor1(), accessor2() );
             } );
         };
     };
@@ -113,10 +165,14 @@
         lt: getVariadicComparator( lt ),
         lte: getVariadicComparator( lte ),
         neq: getVariadicComparator( neq ),
-        not: getUnaryEvaluator( not ),
+        not: getUnaryFilter( not ),
         or: getVariadicComparator( or, true ),
         seq: getVariadicComparator( seq ),
         sneq: getVariadicComparator( sneq ),
+        
+        any: getBinaryFilter( any ),
+        mean: getUnaryFilter( mean ),
+        sum: getUnaryFilter( sum ),
         
         // Inject macros into ko.computed
         inject: function () {

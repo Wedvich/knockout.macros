@@ -29,7 +29,7 @@ And here's a shorthand way with **knockout.macros**:
         this.everythingIsTrue = ko.computed.and( this.a, this.b, this.c );
     };
     
-Macro reference
+Value macros
 ---
 All values passed as parameters can be either Knockout observables or plain functions/values.
 
@@ -100,6 +100,28 @@ Tests two or more values for strict equality using `===`.
 **sneq** `ko.computed.sneq( value1, value2[, valueN...] )` 
 
 Tests two or more values for strict inequality using `!==`.
+
+Array macros
+---
+The `arrayValue` parameter can be either a Knockout observable array or a plain array.
+
+Any additional values passed as parameters can be either Knockout observables or plain functions/values.
+
+**any** `ko.computed.any( arrayValue, matchValue )`
+
+Returns true if the array contains any value that strictly matches `matchValue`.
+
+---
+
+**mean** `ko.computed.mean( arrayValue )`
+
+Calculates the average mean of all numeric elements of the array. Ignores elements for which `isNaN` is true.
+
+---
+
+**sum** `ko.computed.sum( arrayValue )`
+
+Calculates the sum of all numeric elements of the array. Ignores elements for which `isNaN` is true.
 
 Support
 ---

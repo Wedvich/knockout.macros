@@ -8,10 +8,14 @@
         lt: getVariadicComparator( lt ),
         lte: getVariadicComparator( lte ),
         neq: getVariadicComparator( neq ),
-        not: getUnaryEvaluator( not ),
+        not: getUnaryFilter( not ),
         or: getVariadicComparator( or, true ),
         seq: getVariadicComparator( seq ),
         sneq: getVariadicComparator( sneq ),
+        
+        any: getBinaryFilter( any ),
+        mean: getUnaryFilter( mean ),
+        sum: getUnaryFilter( sum ),
         
         // Inject macros into ko.computed
         inject: function () {

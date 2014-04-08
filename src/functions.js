@@ -27,12 +27,23 @@
         };
     };
     
-    // Helper function that returns a computed observable evaluator for a single parameter
-    var getUnaryEvaluator = function ( evaluator ) {
+    // Helper function that returns a computed observable filter for a single parameter
+    var getUnaryFilter = function ( filter ) {
         return function () {
             var accessor = getAccessor( arguments[ 0 ] );
             return ko.computed( function () {
-                return evaluator( accessor() );
+                return filter( accessor() );
+            } );
+        };
+    };
+
+    // Helper function that returns a computed observable filter for two parameters
+    var getBinaryFilter = function ( filter ) {
+        return function () {
+            var accessor1 = getAccessor( arguments[ 0 ] );
+            var accessor2 = getAccessor( arguments[ 1 ] );
+            return ko.computed( function () {
+                return filter( accessor1(), accessor2() );
             } );
         };
     };
