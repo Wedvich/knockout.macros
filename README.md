@@ -107,6 +107,8 @@ The `arrayValue` parameter can be either a Knockout observable array or a plain 
 
 Any additional values passed as parameters can be either Knockout observables or plain functions/values.
 
+---
+
 **any** `ko.computed.any( arrayValue, matchValue )`
 
 Returns true if the array contains any value that strictly matches `matchValue`.
