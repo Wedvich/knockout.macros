@@ -45,7 +45,7 @@ Performs a logical *and* between two or more values, using the truthiness of eac
 
 **eq** `ko.computed.eq( value1, value2[, valueN...] )` 
 
-Tests two or more values for loose equality using `==`.
+Tests two or more values for loose equality.
 
 ---
 
@@ -75,7 +75,7 @@ Checks if the left value is less than or equal the right value for two or more v
 
 **neq** `ko.computed.neq( value1, value2[, valueN...] )` 
 
-Tests two or more values for loose inequality using `!=`.
+Tests two or more values for loose inequality.
 
 ---
 
@@ -93,13 +93,13 @@ Performs a logical *or* between two or more values, using the truthiness of each
 
 **seq** `ko.computed.seq( value1, value2[, valueN...] )` 
 
-Tests two or more values for strict equality using `===`.
+Tests two or more values for strict equality.
 
 ---
 
 **sneq** `ko.computed.sneq( value1, value2[, valueN...] )` 
 
-Tests two or more values for strict inequality using `!==`.
+Tests two or more values for strict inequality.
 
 Array macros
 ---
@@ -111,13 +111,19 @@ Any additional values passed as parameters can be either Knockout observables or
 
 **any** `ko.computed.any( arrayValue, matchValue )`
 
-Returns true if the array contains any value that strictly matches `matchValue`.
+Returns true if the array contains any element that strictly matches `matchValue`.
 
 ---
 
 **mean** `ko.computed.mean( arrayValue )`
 
 Calculates the average mean of all numeric elements of the array. Ignores elements for which `isNaN` is true.
+
+---
+
+**none** `ko.computed.none( arrayValue, matchValue )`
+
+Returns true if the array does not contain any element that strictly matches `matchValue`.
 
 ---
 

@@ -15,6 +15,7 @@
         
         any: getBinaryFilter( any ),
         mean: getUnaryFilter( mean ),
+        none: getBinaryFilter( none ),
         sum: getUnaryFilter( sum ),
         
         // Inject macros into ko.computed

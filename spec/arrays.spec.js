@@ -1,4 +1,4 @@
-describe( 'Array functions', function () {
+describe( 'Array functions (any, mean, none, sum)', function () {
     
     ko.computedMacros.inject();
     
@@ -37,34 +37,41 @@ describe( 'Array functions', function () {
         
     } );
     
-    it( 'Should check if an array contains a predefined value', function () {
+    it( 'Should find whether an array contains a predefined value', function () {
         
         var v = ko.observableArray();
-        var computed = ko.computed.any( v, 2 );
+        var any = ko.computed.any( v, 2 );
+        var none = ko.computed.none( v, 2 );
         
         v( [ 1, '2', 3 ] );
-        expect( computed() ).toBe( false );
+        expect( any() ).toBe( false );
+        expect( none() ).toEqual( !any() );
         
         v.push( 2 );
-        expect( computed() ).toBe( true );
+        expect( any() ).toBe( true );
+        expect( none() ).toEqual( !any() );
         
     } );
     
-    it( 'Should check if an array contains an observable value', function () {
+    it( 'Should find whether an array contains an observable value', function () {
         
         var a = ko.observable();
         var v = ko.observableArray();
-        var computed = ko.computed.any( v, a );
+        var any = ko.computed.any( v, a );
+        var none = ko.computed.none( v, a );
         
         a( 'cat' );
         v( [ 'fish', 'horse', 'dog' ] );
-        expect( computed() ).toBe( false );
+        expect( any() ).toBe( false );
+        expect( none() ).toEqual( !any() );
         
         v.push( 'cat' );
-        expect( computed() ).toBe( true );
+        expect( any() ).toBe( true );
+        expect( none() ).toEqual( !any() );
         
         a( 'unicorn' );
-        expect( computed() ).toBe( false );
+        expect( any() ).toBe( false );
+        expect( none() ).toEqual( !any() );
         
     } );
     

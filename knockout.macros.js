@@ -37,6 +37,18 @@
         return sum / elements;
     };
 
+    // Returns whether the array does not contain any value strictly matching the value argument
+    var none = function ( arrayValue, argument ) {
+        var i = 0,
+            value;
+        for ( ; i < arrayValue.length; ++i ) {
+            value = arrayValue[ i ];
+            if ( value === argument )
+                return false;
+        }
+        return true;
+    }; 
+
     // Returns the sum of numeric elements in the array
     var sum = function ( arrayValue ) {
         var i = 0,
@@ -49,7 +61,7 @@
         }
         return sum;
     };
-    
+
     // Helper function that wraps a plain value in a function to create a uniform accessor
     var getAccessor = function ( obj ) {
         return typeof obj === 'function' ? obj : function () { return obj; };
@@ -172,6 +184,7 @@
         
         any: getBinaryFilter( any ),
         mean: getUnaryFilter( mean ),
+        none: getBinaryFilter( none ),
         sum: getUnaryFilter( sum ),
         
         // Inject macros into ko.computed

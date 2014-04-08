@@ -26,6 +26,18 @@
         return sum / elements;
     };
 
+    // Returns whether the array does not contain any value strictly matching the value argument
+    var none = function ( arrayValue, argument ) {
+        var i = 0,
+            value;
+        for ( ; i < arrayValue.length; ++i ) {
+            value = arrayValue[ i ];
+            if ( value === argument )
+                return false;
+        }
+        return true;
+    }; 
+
     // Returns the sum of numeric elements in the array
     var sum = function ( arrayValue ) {
         var i = 0,
