@@ -72,6 +72,18 @@ module.exports = function ( grunt ) {
                         report: 'coverage'
                     }
                 }
+            },
+            knockout32beta: {
+                src: 'knockout.macros.js',
+                options: {
+                    specs: 'spec/*.spec.js',
+                    vendor: 'spec/lib/knockout-3.2.0beta.debug.js',
+                    template: require( 'grunt-template-jasmine-istanbul' ),
+                    templateOptions: {
+                        coverage: 'coverage/coverage.json',
+                        report: 'coverage'
+                    }
+                }
             }
         },
         
@@ -89,5 +101,5 @@ module.exports = function ( grunt ) {
     grunt.loadNpmTasks( 'grunt-contrib-jasmine' );
     grunt.loadNpmTasks( 'grunt-contrib-uglify' );
     
-    grunt.registerTask( 'default', [ 'concat', 'jshint', 'jasmine:knockout23', 'jasmine:knockout30', 'jasmine:knockout31', 'uglify:minify' ]  );
+    grunt.registerTask( 'default', [ 'concat', 'jshint', 'jasmine:knockout23', 'jasmine:knockout30', 'jasmine:knockout31', 'jasmine:knockout32beta', 'uglify:minify' ]  );
 };

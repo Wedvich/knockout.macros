@@ -57,7 +57,7 @@ Checks if the left value is greater than the right value for two or more values.
 
 **gte** `ko.computed.gte( value1, value2[, valueN...] )`
 
-Checks if the left value is greater than or equal the right value for two or more values.
+Checks if the left value is greater than or equal to the right value for two or more values.
 
 ---
 
@@ -69,7 +69,7 @@ Checks if the left value is less than the right value for two or more values.
 
 **lte** `ko.computed.lte( value1, value2[, valueN...] )`
 
-Checks if the left value is less than or equal the right value for two or more values.
+Checks if the left value is less than or equal to the right value for two or more values.
 
 ---
 
@@ -133,7 +133,7 @@ Calculates the sum of all numeric elements of the array. Ignores elements for wh
 
 Support
 ---
-Tested with Knockout 3.1, 3.0 and 2.3.
+Tested with Knockout 3.2 beta, 3.1, 3.0 and 2.3.
 
 License
 ---
